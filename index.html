@@ -312,6 +312,7 @@
                     <option value="petezah">Petezah</option>
                     <option value="frogiesarcade">Frogie's Arcade</option>
                     <option value="flarelink">FlareLink</option>
+                    <option value="dogeub">Dogeub</option>
                 </select>
             </div>
 
@@ -421,29 +422,37 @@
         });
 
         // ============================================
-        // STATIC PROTECTION SYSTEM
+        // EASY CONFIGURATION - ADD YOUR PROXY LINKS HERE
         // ============================================
         
-        // Obfuscated proxy data (Base64 + ROT13 combo)
-        const _0x4a = atob('aHR0cHM6Ly9wZXRlemFoLWRlbW8uZXhhbXBsZS5jb20=');
-        const _0x4b = atob('aHR0cHM6Ly9mcm9naWUtZGVtby5leGFtcGxlLmNvbQ==');
-        const _0x4c = atob('aHR0cHM6Ly9qYXllc2guZ29vZ2xlZHJpdmUuaWN1LmNkbi5jbG91ZGZsYXJlLm5ldA==');
+        const PROXY_LINKS = {
+            petezah: "https://petezah-demo.example.com",
+            frogiesarcade: "https://frogie-demo.example.com",
+            flarelink: "https://jayesh.googledrive.icu.cdn.cloudflare.net",
+            dogeub: "https://dogeub-demo.example.com"
+        };
 
+        // Proxy descriptions (optional - customize as needed)
         const proxyData = {
             petezah: {
                 name: "Petezah",
                 description: "High-speed proxy with advanced features and reliable uptime. Perfect for streaming and browsing.",
-                _k: _0x4a
+                _k: PROXY_LINKS.petezah
             },
             frogiesarcade: {
                 name: "Frogie's Arcade",
                 description: "Gaming-focused proxy solution with optimized performance for web games and low latency.",
-                _k: _0x4b
+                _k: PROXY_LINKS.frogiesarcade
             },
             flarelink: {
                 name: "FlareLink",
                 description: "Reliable and secure proxy access with enhanced privacy features and fast connection speeds.",
-                _k: _0x4c
+                _k: PROXY_LINKS.flarelink
+            },
+            dogeub: {
+                name: "Dogeub",
+                description: "Fast and lightweight proxy service with clean interface and excellent compatibility.",
+                _k: PROXY_LINKS.dogeub
             }
         };
 
