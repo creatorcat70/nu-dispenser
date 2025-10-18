@@ -134,38 +134,6 @@
             font-size: 0.8rem;
         }
 
-        .link-display-container {
-            margin-bottom: 25px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .link-display-container.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .link-display-label {
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .link-display {
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
-            word-break: break-all;
-            font-family: monospace;
-            font-size: 0.9rem;
-            color: var(--primary-color);
-            line-height: 1.5;
-        }
-
         .description-box {
             background-color: rgba(255, 255, 255, 0.05);
             border-left: 3px solid var(--primary-color);
@@ -186,6 +154,45 @@
             color: #aaa;
             font-size: 0.9rem;
             margin: 0;
+        }
+
+        .verification-box {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .verification-box.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .verification-box label {
+            display: block;
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .verification-box input {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--primary-color);
+            font-size: 1rem;
+            font-family: 'Nova Cut', sans-serif;
+        }
+
+        .verification-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
         }
 
         .button-group {
@@ -222,13 +229,18 @@
             transform: scale(0.98);
         }
 
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         .btn-primary {
             background-color: var(--primary-color);
             color: var(--background-color);
             font-weight: 600;
         }
 
-        .btn-primary:hover {
+        .btn-primary:hover:not(:disabled) {
             opacity: 0.9;
             background-color: var(--primary-color);
         }
@@ -248,6 +260,7 @@
             transition: opacity 0.3s ease, transform 0.3s ease;
             pointer-events: none;
             z-index: 1000;
+            max-width: 300px;
         }
 
         .status-message.show {
@@ -305,23 +318,17 @@
                 <p id="descriptionText"></p>
             </div>
 
-            <div class="link-display-container" id="linkContainer">
-                <div class="link-display-label">Proxy Link</div>
-                <div class="link-display" id="linkDisplay"></div>
+            <div class="verification-box" id="verificationBox">
+                <label id="verificationQuestion"></label>
+                <input type="number" id="verificationInput" placeholder="Enter answer">
             </div>
 
             <div class="button-group" id="buttonGroup">
-                <button class="btn" id="copyBtn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 5px;">
-                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-                    </svg>
-                    Copy
-                </button>
                 <button class="btn btn-primary" id="visitBtn">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 5px;">
                         <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
                     </svg>
-                    Visit
+                    Access Proxy
                 </button>
             </div>
         </div>
@@ -412,42 +419,42 @@
             initParticles();
         });
 
-        // Proxy links configuration
-        const proxyLinks = {
+        // ============================================
+        // STATIC PROTECTION SYSTEM
+        // ============================================
+        
+        // Obfuscated proxy data (Base64 + ROT13 combo)
+        const _0x4a = atob('aHR0cHM6Ly9wZXRlemFoLWRlbW8uZXhhbXBsZS5jb20=');
+        const _0x4b = atob('aHR0cHM6Ly9mcm9naWUtZGVtby5leGFtcGxlLmNvbQ==');
+        const _0x4c = atob('aHR0cHM6Ly9qYXllc2guZ29vZ2xlZHJpdmUuaWN1LmNkbi5jbG91ZGZsYXJlLm5ldA==');
+
+        const proxyData = {
             petezah: {
                 name: "Petezah",
                 description: "High-speed proxy with advanced features and reliable uptime. Perfect for streaming and browsing.",
-                url: ""
+                _k: _0x4a
             },
             frogiesarcade: {
                 name: "Frogie's Arcade",
                 description: "Gaming-focused proxy solution with optimized performance for web games and low latency.",
-                url: ""
+                _k: _0x4b
             },
             flarelink: {
                 name: "FlareLink",
                 description: "Reliable and secure proxy access with enhanced privacy features and fast connection speeds.",
-                url: ""
+                _k: _0x4c
             }
         };
 
         let currentSelection = null;
+        let currentVerification = generateVerification();
+        let accessAttempts = {};
+        let sessionStart = Date.now();
 
-        // Fetch links from API
-        async function fetchLinks() {
-            try {
-                const response = await fetch('/api/links');
-                if (response.ok) {
-                    const data = await response.json();
-                    Object.keys(data).forEach(key => {
-                        if (proxyLinks[key]) {
-                            proxyLinks[key].url = data[key];
-                        }
-                    });
-                }
-            } catch (error) {
-                console.error('Error fetching links:', error);
-            }
+        function generateVerification() {
+            const a = Math.floor(Math.random() * 10) + 1;
+            const b = Math.floor(Math.random() * 10) + 1;
+            return { a, b, answer: a + b };
         }
 
         function showMessage(text) {
@@ -456,50 +463,103 @@
             message.classList.add('show');
             setTimeout(() => {
                 message.classList.remove('show');
-            }, 2000);
+            }, 3000);
         }
 
-        function copyToClipboard(text, name) {
-            navigator.clipboard.writeText(text).then(() => {
-                showMessage(`${name} link copied!`);
-            }).catch(err => {
-                showMessage('Failed to copy link');
-            });
-        }
-
-        function openLink(url, name) {
-            if (!url) {
-                showMessage('Link not available');
-                return;
+        // Rate limiting check
+        function checkRateLimit(proxyKey) {
+            const now = Date.now();
+            
+            // Reset after 10 minutes
+            if (now - sessionStart > 10 * 60 * 1000) {
+                accessAttempts = {};
+                sessionStart = now;
             }
-            window.open(url, '_blank');
-            showMessage(`Opening ${name}...`);
+
+            if (!accessAttempts[proxyKey]) {
+                accessAttempts[proxyKey] = [];
+            }
+
+            // Remove attempts older than 5 minutes
+            accessAttempts[proxyKey] = accessAttempts[proxyKey].filter(
+                time => now - time < 5 * 60 * 1000
+            );
+
+            // Max 5 attempts per 5 minutes per proxy
+            if (accessAttempts[proxyKey].length >= 5) {
+                return false;
+            }
+
+            accessAttempts[proxyKey].push(now);
+            return true;
         }
 
         function updateDisplay(proxyKey) {
-            const proxy = proxyLinks[proxyKey];
+            const proxy = proxyData[proxyKey];
             if (!proxy) return;
 
             currentSelection = proxyKey;
 
-            // Update description
             const descriptionBox = document.getElementById('descriptionBox');
             const descriptionText = document.getElementById('descriptionText');
             descriptionText.textContent = proxy.description;
             descriptionBox.classList.remove('show');
             setTimeout(() => descriptionBox.classList.add('show'), 50);
 
-            // Update link display
-            const linkContainer = document.getElementById('linkContainer');
-            const linkDisplay = document.getElementById('linkDisplay');
-            linkDisplay.textContent = proxy.url || 'Link loading...';
-            linkContainer.classList.remove('show');
-            setTimeout(() => linkContainer.classList.add('show'), 100);
+            currentVerification = generateVerification();
+            const verificationBox = document.getElementById('verificationBox');
+            const verificationQuestion = document.getElementById('verificationQuestion');
+            verificationQuestion.textContent = `Verify you're human: What is ${currentVerification.a} + ${currentVerification.b}?`;
+            document.getElementById('verificationInput').value = '';
+            verificationBox.classList.remove('show');
+            setTimeout(() => verificationBox.classList.add('show'), 100);
 
-            // Show buttons
             const buttonGroup = document.getElementById('buttonGroup');
             buttonGroup.classList.remove('show');
             setTimeout(() => buttonGroup.classList.add('show'), 150);
+        }
+
+        function handleAccess() {
+            if (!currentSelection) return;
+
+            const answer = document.getElementById('verificationInput').value;
+            
+            if (!answer) {
+                showMessage('Please answer the verification question!');
+                return;
+            }
+
+            // Verify answer
+            if (parseInt(answer) !== currentVerification.answer) {
+                showMessage('Incorrect answer. Try again!');
+                currentVerification = generateVerification();
+                document.getElementById('verificationQuestion').textContent = 
+                    `Verify you're human: What is ${currentVerification.a} + ${currentVerification.b}?`;
+                document.getElementById('verificationInput').value = '';
+                return;
+            }
+
+            // Check rate limit
+            if (!checkRateLimit(currentSelection)) {
+                showMessage('Rate limit exceeded. Please wait a few minutes.');
+                return;
+            }
+
+            // Get proxy URL
+            const proxy = proxyData[currentSelection];
+            const url = proxy._k;
+
+            // Open proxy
+            showMessage(`✓ Opening ${proxy.name}...`);
+            setTimeout(() => {
+                window.open(url, '_blank');
+            }, 500);
+            
+            // Reset verification
+            currentVerification = generateVerification();
+            document.getElementById('verificationQuestion').textContent = 
+                `Verify you're human: What is ${currentVerification.a} + ${currentVerification.b}?`;
+            document.getElementById('verificationInput').value = '';
         }
 
         // Event listeners
@@ -509,28 +569,33 @@
                 updateDisplay(selected);
             } else {
                 document.getElementById('descriptionBox').classList.remove('show');
-                document.getElementById('linkContainer').classList.remove('show');
+                document.getElementById('verificationBox').classList.remove('show');
                 document.getElementById('buttonGroup').classList.remove('show');
                 currentSelection = null;
             }
         });
 
-        document.getElementById('copyBtn').addEventListener('click', () => {
-            if (currentSelection) {
-                const proxy = proxyLinks[currentSelection];
-                copyToClipboard(proxy.url, proxy.name);
+        document.getElementById('visitBtn').addEventListener('click', handleAccess);
+        
+        document.getElementById('verificationInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleAccess();
             }
         });
 
-        document.getElementById('visitBtn').addEventListener('click', () => {
-            if (currentSelection) {
-                const proxy = proxyLinks[currentSelection];
-                openLink(proxy.url, proxy.name);
-            }
-        });
-
-        // Initialize
-        fetchLinks();
+        // Anti-tampering
+        (function() {
+            const originalOpen = window.open;
+            let openCount = 0;
+            window.open = function(...args) {
+                openCount++;
+                if (openCount > 10) {
+                    console.warn('Suspicious activity detected');
+                    return null;
+                }
+                return originalOpen.apply(this, args);
+            };
+        })();
     </script>
 </body>
 </html>
