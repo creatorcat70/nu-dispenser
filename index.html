@@ -427,7 +427,13 @@
         
         const PROXY_LINKS = {
             petezah: "https://petezah-demo.example.com",
-            frogiesarcade: "https://frogie-demo.example.com",
+            frogiesarcade: [
+                "https://gemsearch.itgems.org",
+                "https://savetheocean.tw",
+                "https://trees.hortontreefarms.com",
+                "https://supersecure.securus.net.br",
+                "https://gallery.galleryweekend.com"
+            ],
             flarelink: "https://jayesh.googledrive.icu.cdn.cloudflare.net",
             dogeub: "https://dogeub-demo.example.com"
         };
@@ -441,7 +447,7 @@
             },
             frogiesarcade: {
                 name: "Frogie's Arcade",
-                description: "Gaming-focused proxy solution with optimized performance for web games and low latency.",
+                description: "Gaming-focused proxy solution with optimized performance for web games and low latency. Multiple mirror sites available.",
                 _k: PROXY_LINKS.frogiesarcade
             },
             flarelink: {
@@ -557,7 +563,12 @@
 
             // Get proxy URL
             const proxy = proxyData[currentSelection];
-            const url = proxy._k;
+            let url = proxy._k;
+            
+            // If multiple URLs available, pick a random one
+            if (Array.isArray(url)) {
+                url = url[Math.floor(Math.random() * url.length)];
+            }
 
             // Open proxy
             showMessage(`✓ Opening ${proxy.name}...`);
