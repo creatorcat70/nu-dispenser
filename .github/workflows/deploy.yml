@@ -1,0 +1,46 @@
+# .github/workflows/deploy.yml
+name: Deploy Proxy Dispenser
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Create API endpoint
+        run: |
+          mkdir -p api
+          cat > api/links.js << 'EOF'
+          export default function handler(req, res) {
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Content-Type', 'application/json');
+            
+            const links = {
+              petezah: process.env.PETEZAH_LINK || '',
+              frogiesarcade: process.env.FROGIESARCADE_LINK || '',
+              flarelink: process.env.FLARELINK_LINK || ''
+            };
+            
+            res.status(200).json(links);
+          }
+          EOF
+        env:
+          PETEZAH_LINK: ${{ secrets.PETEZAH_LINK }}
+          FROGIESARCADE_LINK: ${{ secrets.FROGIESARCADE_LINK }}
+          FLARELINK_LINK: ${{ secrets.FLARELINK_LINK }}
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
