@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Network Unity - Proxy Links</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nova+Cut&family=Nova+Script&display=swap" rel="stylesheet">
@@ -309,10 +309,10 @@
             <div class="select-wrapper">
                 <select id="proxySelect">
                     <option value="">-- Select a Proxy --</option>
-                    <option value="petezah">Petezah</option>
-                    <option value="frogiesarcade">Frogie's Arcade</option>
-                    <option value="flarelink">FlareLink</option>
-                    <option value="dogeub">Dogeub</option>
+                    <option value="bolt">Bolt</option>
+                    <option value="mathhub">The Math Hub</option>
+                    <option value="ajhvault">AJH's Vault</option>
+                    <option value="bromine">Bromine</option>
                 </select>
             </div>
 
@@ -426,39 +426,39 @@
         // ============================================
         
         const PROXY_LINKS = {
-            petezah: "https://petezah-demo.example.com",
-            frogiesarcade: [
+            bolt: "https://bolt-demo.example.com",
+            mathhub: [
                 "https://gemsearch.itgems.org",
                 "https://savetheocean.tw",
                 "https://trees.hortontreefarms.com",
                 "https://supersecure.securus.net.br",
                 "https://gallery.galleryweekend.com"
             ],
-            flarelink: "https://jayesh.googledrive.icu.cdn.cloudflare.net",
-            dogeub: "https://dogeub-demo.example.com"
+            ajhvault: "https://jayesh.googledrive.icu.cdn.cloudflare.net",
+            bromine: "https://bromine-demo.example.com"
         };
 
         // Proxy descriptions (optional - customize as needed)
         const proxyData = {
-            petezah: {
-                name: "Petezah",
+            bolt: {
+                name: "Bolt",
                 description: "High-speed proxy with advanced features and reliable uptime. Perfect for streaming and browsing.",
-                _k: PROXY_LINKS.petezah
+                _k: PROXY_LINKS.bolt
             },
-            frogiesarcade: {
-                name: "Frogie's Arcade",
+            mathhub: {
+                name: "The Math Hub",
                 description: "Gaming-focused proxy solution with optimized performance for web games and low latency. Multiple mirror sites available.",
-                _k: PROXY_LINKS.frogiesarcade
+                _k: PROXY_LINKS.mathhub
             },
-            flarelink: {
-                name: "FlareLink",
+            ajhvault: {
+                name: "AJH's Vault",
                 description: "Reliable and secure proxy access with enhanced privacy features and fast connection speeds.",
-                _k: PROXY_LINKS.flarelink
+                _k: PROXY_LINKS.ajhvault
             },
-            dogeub: {
-                name: "Dogeub",
+            bromine: {
+                name: "Bromine",
                 description: "Fast and lightweight proxy service with clean interface and excellent compatibility.",
-                _k: PROXY_LINKS.dogeub
+                _k: PROXY_LINKS.bromine
             }
         };
 
